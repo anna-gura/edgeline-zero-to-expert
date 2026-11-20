@@ -152,7 +152,7 @@ main, .bar, .foot {
 .comb::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 11px; background-image: repeating-linear-gradient(to right, var(--edge-dark) 0 3px, transparent 3px 10px); }
 .comb__track {
   display: flex; gap: 20px; width: max-content; align-items: center;
-  animation: comb 34s linear infinite;
+  animation: comb 10s linear infinite;
   font-family: var(--f-display); font-weight: 800; font-size: 22px; text-transform: uppercase; white-space: nowrap;
 }
 .comb__track b { color: var(--edge-orange); font-size: .8em; }
