@@ -151,12 +151,13 @@ main, .bar, .foot {
 }
 .comb::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 11px; background-image: repeating-linear-gradient(to right, var(--edge-dark) 0 3px, transparent 3px 10px); }
 .comb__track {
-  display: flex; gap: 20px; width: max-content; align-items: center;
+  display: flex; --comb-gap: 20px; gap: var(--comb-gap); width: max-content; align-items: center;
   animation: comb 10s linear infinite;
   font-family: var(--f-display); font-weight: 800; font-size: 22px; text-transform: uppercase; white-space: nowrap;
 }
 .comb__track b { color: var(--edge-orange); font-size: .8em; }
-@keyframes comb { to { transform: translateX(-50%); } }
+/* Перший і третій елементи — початки ідентичних копій. Ураховуємо також проміжок між ними. */
+@keyframes comb { to { transform: translateX(calc(-50% - var(--comb-gap) / 2)); } }
 
 /* ---------- заголовки секцій ---------- */
 .h2 {
@@ -378,7 +379,7 @@ main, .bar, .foot {
   .who__card--pro { margin: 70px 0 0; padding-left: 32px; border-left: 1px solid var(--edge-border); }
   .layers li { --step: clamp(14px, 4vw, 64px); font-family: var(--f-display); font-weight: 400; font-size: clamp(18px, 2.4vw, 26px); padding: 20px 24px; }
   .plans__grid { grid-auto-columns: 62%; }
-  .comb__track { font-size: 30px; gap: 26px; }
+  .comb__track { font-size: 30px; --comb-gap: 26px; }
   .moves li { grid-template-columns: 70px 1fr; gap: 18px; }
 }
 
@@ -426,7 +427,7 @@ main, .bar, .foot {
 
   .comb { padding: 30px 0 18px; transform: rotate(-1.6deg); }
   .comb::before { height: 14px; background-image: repeating-linear-gradient(to right, var(--edge-dark) 0 3px, transparent 3px 11px); }
-  .comb__track { font-size: clamp(30px, 3vw, 40px); gap: 28px; }
+  .comb__track { font-size: clamp(30px, 3vw, 40px); --comb-gap: 28px; }
 
   .h2 { font-size: clamp(40px, 4.6vw, 68px); margin-bottom: 48px; }
   .who { padding: 130px 0 110px; }
