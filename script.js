@@ -27,6 +27,20 @@
   let fitTimer;
   window.addEventListener("resize", () => { clearTimeout(fitTimer); fitTimer = setTimeout(fitHero, 100); });
 
+  // ---------- бігучий рядок: постійна швидкість незалежно від ширини шрифту ----------
+  const combTrack = $(".comb__track");
+  if (combTrack && combTrack.children.length >= 3) {
+    const COMB_SPEED = 90; // CSS-пікселів за секунду
+    function fitCombSpeed() {
+      // Відстань між початками двох однакових копій (разом із gap).
+      const distance = combTrack.children[2].offsetLeft - combTrack.children[0].offsetLeft;
+      if (distance > 0) combTrack.style.animationDuration = (distance / COMB_SPEED) + "s";
+    }
+    fitCombSpeed();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitCombSpeed);
+    window.addEventListener("resize", fitCombSpeed);
+  }
+
   // ---------- розріз заголовка ----------
   requestAnimationFrame(() => document.body.classList.add("is-loaded"));
 
