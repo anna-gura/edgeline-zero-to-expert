@@ -142,7 +142,7 @@
     setTab(i);
   }));
   grid.addEventListener("scroll", () => {
-    const x = grid.scrollLeft + grid.clientWidth * 0.4;
+    const x = grid.scrollLeft + grid.clientWidth * 1;
     let idx = 0;
     planEls.forEach((p, i) => { if (p.offsetLeft - grid.offsetLeft <= x) idx = i; });
     setTab(idx);
